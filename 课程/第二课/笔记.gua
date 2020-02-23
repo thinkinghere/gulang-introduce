@@ -1,0 +1,41 @@
+// 通过练习学习知识
+//
+// 数据类型
+// 使用log进行调试
+// 选择控制 if
+// 顺序 选择 循环
+//
+// 先进的文化是不断融合 不断进步的
+// 封闭没有前途
+
+// 代码错误
+    // 1逻辑错误
+    // 2 语法错误
+
+//代码调试的方式
+// 调试的难点
+//1 程序运行路径（分支）不知道，要想办法显示出来
+//2 程序的运行状态（变量的值）不知道，要去看到它
+
+
+//判断奇数
+const isOdd = function(n){
+    return n % 2 != 0
+}
+
+// 判断偶数
+const isEven = function(n){
+    return n % 2 == 0
+}
+var n1 = isOdd(4)
+log('n1', n1)
+
+const min = function(a, b) {
+    if (a < b) {
+        return a
+    } else {
+        return b
+    }
+}
+
+log('min is:', min(1, 3))
