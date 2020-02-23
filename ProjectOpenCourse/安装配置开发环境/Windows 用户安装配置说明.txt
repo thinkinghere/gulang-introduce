@@ -1,0 +1,43 @@
+Windows 用户安装配置流程如下
+
+
+
+1，用下面的链接下载 Atom 编辑器并安装
+http://npm.taobao.org/mirrors/atom/1.39.1/AtomSetup-x64.exe
+安装后，一定要打开一次，否则后续的步骤会失败
+
+
+
+2，用下面的链接下载程序的运行环境（需要注册，没办法，国内现在能高速下载的网站太少，暂时先这样忍忍吧）
+https://gitee.com/kuaibiancheng/ProjectOpenCourse/repository/archive/master.zip
+
+解压后，把下面目录中的 gualang 目录复制到桌面中
+ProjectOpenCourse/安装配置开发环境
+
+
+
+3，安装必要的开发工具
+双击执行下面目录中的 Windows用户配置开发环境.bat 文件来进行环境配置
+ProjectOpenCourse/安装配置开发环境/Windows用户配置开发环境.bat
+
+如果你没有在第 1 步安装 Atom 编辑器后打开一次，这里会失败
+
+
+
+4，配置开发环境
+    1）查看你的电脑用户名
+    2）打开 ProjectOpenCourse/安装配置开发环境/Windows Atom 配置.txt 文件
+	替换里面最后一行的 "你的用户名" 为你真实的电脑用户名
+        假设你的用户名是 gua，替换后最后一行的内容如下
+      gua: "C:/Users/gua/Desktop/gualang/gualang.exe"
+        假设你的用户名是 lang
+      gua: "C:/Users/lang/Desktop/gualang/gualang.exe"
+
+
+
+5，打开 Atom 软件，点击 File - Config.. 来打开 Atom 的配置
+把第 4 步修改后的 Windows Atom 配置.txt 文件内容复制并粘贴过来保存
+
+
+
+6，配置完成，现在你可以在 Atom 中新建 .gua 后缀的文件，并且使用 Alt + r 快捷键来运行程序了

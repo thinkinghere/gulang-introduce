@@ -1,0 +1,17 @@
+"*":
+  core:
+    automaticallyUpdate: false
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+  editor:
+    fontSize: 18
+    showInvisibles: true
+    tabLength: 4
+    tabType: "soft"
+  welcome:
+    showOnStartup: false
+  runner:
+    extensions:
+      gua: "C:/Users/你的用户名/Desktop/gualang/gualang.exe"
