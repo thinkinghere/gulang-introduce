@@ -46,6 +46,24 @@ const product = function(array) {
 }
 
 // log('product', product([1,2,3,4]))
+//自动化测试
+const ensure = function(condition, message) {
+    if (condition){
+        log('success')
+    }else{
+        log('err', message)
+    }
+}
+
+const testProduct = function() {
+    var numbers = [1,2,3,4]
+    var value = 24
+    ensure(product(numbers) == value, '测试错误1')
+    ensure(product([1]) == 1, '测试错误2')
+    ensure(product([0]) == 0 , '测试错误3')
+}
+
+// testProduct()
 
 
 
@@ -58,10 +76,9 @@ const product = function(array) {
 // 2. 返回 n 的值（很重要，一定要 return n）
 const abs = function(n) {
     if (n < 0){
-        return -n
-    }else{
-        return n
+        n = -n
     }
+    return n
 }
 
 // log('abs', abs(-9))
@@ -82,11 +99,22 @@ const abs = function(n) {
 const average = function(array) {
     var s = sum(array)
     var l = array.length()
-    return s/l
+    return s / l
 }
 
 // log('avg', average([1,2,3]))
+//近似两个小数的套路
+const flaotEqual = function(a, b) {
+    var delta = 0.00001 //定义近似的精度
+    return abs(a - b) < delta //两者的差值小于定义的精度 认为是相等的
+}
 
+const testAverage = function() {
+    ensure(average([1,2,3]) == 2, '测试错误1')
+    ensure(average([1,2,3,4]) == 2.5, '测试错误2')
+    var c3 = flaotEqual(average([5,2,3]), 3.333333)
+    ensure(c3, '测试错误3')
+}
 
 
 // 作业 4
@@ -105,9 +133,8 @@ const average = function(array) {
 const min = function(array) {
     var s = array[0]
     var i = 0
-    var n = 0
     while(i < array.length()){
-        n = array[i]
+        var n = array[i]
         if (n < s){
             s = n
         }
@@ -116,6 +143,11 @@ const min = function(array) {
     return s
 }
 
+const testMain = function() {
+    ensure(min([1,2,3]) == 1, 'test main1')
+    ensure(min([1,-2,3]) == -2, 'test main2')
+    ensure(min([11,2,3]) == 2, 'test main3')
+}
 // log('min', min([5,7,8,3]))
 
 
@@ -228,3 +260,13 @@ const fac = function(n) {
 }
 
 log('fac', fac(5)) // 5 4 3 2
+
+//程序只有一个入口
+//组件化
+//最外层不能有未定义的代码
+const __main = function() {
+    // testAverage()
+    // testMain()
+}
+
+__main()
