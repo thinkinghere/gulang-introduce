@@ -33,7 +33,7 @@ const whileSum100 = function() {
 }
 
 // 运行
-whileSum100()
+// whileSum100()
 // 输出如下
 // 1 到 100 的奇数和是 2500
 
@@ -53,7 +53,7 @@ const breakStatement = function() {
     log('break 结束的 i 值', i)
 }
 // 运行
-breakStatement()
+// breakStatement()
 // 输出如下
 // while 中的 break 语句
 // break 结束的 i 值 0
@@ -79,7 +79,7 @@ const continueStatement = function() {
     }
 }
 // 运行
-continueStatement()
+// continueStatement()
 // 输出如下
 // while 中的 continue 语句 1
 // while 中的 continue 语句 3
@@ -110,7 +110,7 @@ var taoer = {
     'height': 169,
 }
 
-log('map', taoer)
+// log('map', taoer)
 
 // 运行，输出如下
 // map  {'name': 'gua', 'height': 169}
@@ -126,15 +126,16 @@ log('map', taoer)
 // 访问（读取/使用） map 中的元素
 //
 // 通过 [] 语法可以用 key 得到 value
-log('通过 key 访问 map 的元素')
-log('taoer["name"]', taoer['name'])
+// log('通过 key 访问 map 的元素')
+// log('taoer["name"]', taoer['name'])
 
 // 也可以用 . 语法
-log('taoer.name', taoer.name)
+// log('taoer.name', taoer.name)
 
 // 还可以用变量
 var key = 'height'
 log('taoer[key]', taoer[key])
+
 
 // 运行，输出如下
 // 通过 key 访问 map 的元素
