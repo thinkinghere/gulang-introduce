@@ -44,15 +44,22 @@ const find = function(s1, s2) {
     while (i < s1.length()) {
         // cut 切片注意开始 结束
         // if (s1.cut(i, i + 1) == s2 ) {
-        if (s1[i] == s2 ) {
-            index = i
-            break
-        }else{
-            index = -1
+
+        // if (s1[i] == s2 ) {
+        //     index = i
+        //     break
+        // }else{
+        //     index = -1
+        // }
+
+        var c = s1[i]
+        if (c == s2) {
+            return i
         }
         i += 1
     }
-    return index
+    // return index
+    return -1
     // 返回 s2 在 s1 中的下标, 从 0 开始, 如果不存在则返回 -1
 }
 
@@ -63,7 +70,7 @@ const test_find = function() {
     ensure(find('hello', 'l') == 2, 'find 3')
 }
 
-// test_find()
+test_find()
 
 
 
@@ -228,13 +235,21 @@ const encode1 = function(s) {
     var i = 0
     var result = ""
     while(i < s.length()) {
+        // var index = find(lower, s[i])
+        // var encode_index = index + 1
+        // if (index == 25) {
+        //     result += 'a'
+        // }else {
+        //     result += lower[encode_index]
+        // }
         var index = find(lower, s[i])
-        var encode_index = index + 1
-        if (index == 25) {
-            result += 'a'
-        }else {
-            result += lower[encode_index]
-        }
+        index += 1
+        //通常做法
+        // if (index == 26) {
+        //     index = 0
+        // }
+        //去余数
+        index = index % 26
         i += 1
     }
     return result
@@ -268,12 +283,14 @@ const decode1 = function(s) {
     var result = ""
     while(i < s.length()) {
         var index = find(lower, s[i])
-        var decode_index = index - 1
-        if (s[i] == 'a') {
-            result += 'z'
-        }else {
-            result += lower[decode_index]
-        }
+        // var decode_index = index - 1
+        // if (s[i] == 'a') {
+        //     result += 'z'
+        // }else {
+        //     result += lower[decode_index]
+        // }
+        index = (index - 1 + 26) % 26 //?
+        result += lower[index]
         i += 1
     }
     return result
@@ -303,19 +320,32 @@ const test_decode1 = function() {
 //     2. 注意考虑边界情况，即 index + shift 超出了边界的情况
 
 const encode2 = function(s, shift) {
+    // var lower = 'abcdefghijklmnopqrstuvwxyz'
+    // var i = 0
+    // var result = ""
+    // while(i < s.length()) {
+    //     var index = find(lower, s[i])
+    //     var encode_index = index + shift
+    //     if (encode_index > 25) {
+    //         var new_index = encode_index - 25 -1 // 边界情况
+    //         result += lower[new_index]
+    //     }else {
+    //         // log('encode_index', encode_index)
+    //         result += lower[encode_index]
+    //     }
+    //     i += 1
+    // }
+    // return result
+
+
     var lower = 'abcdefghijklmnopqrstuvwxyz'
     var i = 0
     var result = ""
     while(i < s.length()) {
         var index = find(lower, s[i])
-        var encode_index = index + shift
-        if (encode_index > 25) {
-            var new_index = encode_index - 25 -1 // 边界情况
-            result += lower[new_index]
-        }else {
-            // log('encode_index', encode_index)
-            result += lower[encode_index]
-        }
+        index += shift  //移动shift 位
+        //去余数
+        index = index % 26
         i += 1
     }
     return result
@@ -326,7 +356,7 @@ const test_encode2 = function() {
     ensure(encode2('gw', 3) == 'jz', 'encode2 2')
 }
 
-// test_encode2()
+test_encode2()
 
 
 
@@ -496,3 +526,28 @@ const decode4 = function() {
 }
 
 decode4()
+
+// uqogvkogu k ycpv vq ejcv ykvj aqw,dwv k jcxg pq tgcuqp vq ejcv ykvj aqw
+// tpnfujnft j xbou up dibu xjui zpv,cvu j ibwf op sfbtpo up dibu xjui zpv
+// sometimes i want to chat with you,but i have no reason to chat with you
+// rnldshldr h vzms sn bgzs vhsg xnt,ats h gzud mn qdzrnm sn bgzs vhsg xnt
+// qmkcrgkcq g uylr rm afyr ugrf wms,zsr g fytc lm pcyqml rm afyr ugrf wms
+// pljbqfjbp f txkq ql zexq tfqe vlr,yrq f exsb kl obxplk ql zexq tfqe vlr
+// okiapeiao e swjp pk ydwp sepd ukq,xqp e dwra jk nawokj pk ydwp sepd ukq
+// njhzodhzn d rvio oj xcvo rdoc tjp,wpo d cvqz ij mzvnji oj xcvo rdoc tjp
+// migyncgym c quhn ni wbun qcnb sio,von c bupy hi lyumih ni wbun qcnb sio
+// lhfxmbfxl b ptgm mh vatm pbma rhn,unm b atox gh kxtlhg mh vatm pbma rhn
+// kgewlaewk a osfl lg uzsl oalz qgm,tml a zsnw fg jwskgf lg uzsl oalz qgm
+// jfdvkzdvj z nrek kf tyrk nzky pfl,slk z yrmv ef ivrjfe kf tyrk nzky pfl
+// iecujycui y mqdj je sxqj myjx oek,rkj y xqlu de huqied je sxqj myjx oek
+// hdbtixbth x lpci id rwpi lxiw ndj,qji x wpkt cd gtphdc id rwpi lxiw ndj
+// gcashwasg w kobh hc qvoh kwhv mci,pih w vojs bc fsogcb hc qvoh kwhv mci
+// fbzrgvzrf v jnag gb pung jvgu lbh,ohg v unir ab ernfba gb pung jvgu lbh
+// eayqfuyqe u imzf fa otmf iuft kag,ngf u tmhq za dqmeaz fa otmf iuft kag
+// dzxpetxpd t hlye ez nsle htes jzf,mfe t slgp yz cpldzy ez nsle htes jzf
+// cywodswoc s gkxd dy mrkd gsdr iye,led s rkfo xy bokcyx dy mrkd gsdr iye
+// bxvncrvnb r fjwc cx lqjc frcq hxd,kdc r qjen wx anjbxw cx lqjc frcq hxd
+// awumbquma q eivb bw kpib eqbp gwc,jcb q pidm vw zmiawv bw kpib eqbp gwc
+// zvtlaptlz p dhua av joha dpao fvb,iba p ohcl uv ylhzvu av joha dpao fvb
+// yuskzosky o cgtz zu ingz cozn eua,haz o ngbk tu xkgyut zu ingz cozn eua
+// xtrjynrjx n bfsy yt hmfy bnym dtz,gzy n mfaj st wjfxts yt hmfy bnym dtz
