@@ -346,6 +346,7 @@ const encode2 = function(s, shift) {
         index += shift  //移动shift 位
         //去余数
         index = index % 26
+        result += lower[index]
         i += 1
     }
     return result
@@ -376,22 +377,24 @@ test_encode2()
 //     2. 注意考虑边界情况
 
 const decode2 = function(s, shift) {
-    var lower = 'abcdefghijklmnopqrstuvwxyz'
-    var i = 0
-    var result = ""
-    while(i < s.length()) {
-        var index = find(lower, s[i])
-        var decode_index = index - shift
-        //a index 0  shift 2  lower[24]  26 - shift
-        if (s[i] == 'a') {
-            var new_index = 26 - shift
-            result += lower[new_index]
-        }else {
-            result += lower[decode_index]
-        }
-        i += 1
-    }
-    return result
+    // var lower = 'abcdefghijklmnopqrstuvwxyz'
+    // var i = 0
+    // var result = ""
+    // while(i < s.length()) {
+    //     var index = find(lower, s[i])
+    //     var decode_index = index - shift
+    //     //a index 0  shift 2  lower[24]  26 - shift
+    //     if (s[i] == 'a') {
+    //         var new_index = 26 - shift
+    //         result += lower[new_index]
+    //     }else {
+    //         result += lower[decode_index]
+    //     }
+    //     i += 1
+    // }
+    // return result
+
+    return encode2(s, 26 - shift) //?
 }
 
 const test_decode2 = function() {
@@ -420,20 +423,39 @@ const test_decode2 = function() {
 //     2. 如果遍历出来的不是字母，则什么都不处理，直接拼接在字符串上
 //     3. 如果遍历出来的是小写字母，就按照作业 7 中的方式处理
 const encode3 = function(s, shift) {
+    // var lower = 'abcdefghijklmnopqrstuvwxyz'
+    // var i = 0
+    // var result = ""
+    // while(i < s.length()) {
+    //     var index = find(lower, s[i])
+    //     var encode_index = index + shift
+    //     if (index == -1) {
+    //         result += s[i]
+    //     }
+    //     else if (encode_index > 25) {
+    //         var new_index = encode_index - 25 -1 // 边界情况
+    //         result += lower[new_index]
+    //     }else {
+    //         result += lower[encode_index]
+    //     }
+    //     i += 1
+    // }
+    // return result
+
+
     var lower = 'abcdefghijklmnopqrstuvwxyz'
     var i = 0
     var result = ""
     while(i < s.length()) {
-        var index = find(lower, s[i])
-        var encode_index = index + shift
-        if (index == -1) {
-            result += s[i]
-        }
-        else if (encode_index > 25) {
-            var new_index = encode_index - 25 -1 // 边界情况
-            result += lower[new_index]
+        var c = s[i]
+        var index = find(lower, c)
+        if (index > -1){
+            index += shift  //移动shift 位
+            //去余数
+            index = index % 26
+            result += lower[index]
         }else {
-            result += lower[encode_index]
+            result += c
         }
         i += 1
     }
@@ -445,7 +467,7 @@ const test_encode3 = function() {
     ensure(encode3('g#w', 3) == 'j#z', 'encode3 2')
 }
 
-// test_encode3()
+test_encode3()
 
 
 
@@ -465,25 +487,27 @@ const test_encode3 = function() {
 //     2. 否则直接拼接结果
 
 const decode3 = function(s, shift) {
-    var lower = 'abcdefghijklmnopqrstuvwxyz'
-    var i = 0
-    var result = ""
-    while(i < s.length()) {
-        var index = find(lower, s[i])
-        var decode_index = index - shift
-        //a index 0  shift 2  lower[24]  26 - shift
-        if (index == -1) {
-            result += s[i]
-        }
-        else if (s[i] == 'a') {
-            var new_index = 26 - shift
-            result += lower[new_index]
-        }else {
-            result += lower[decode_index]
-        }
-        i += 1
-    }
-    return result
+    // var lower = 'abcdefghijklmnopqrstuvwxyz'
+    // var i = 0
+    // var result = ""
+    // while(i < s.length()) {
+    //     var index = find(lower, s[i])
+    //     var decode_index = index - shift
+    //     //a index 0  shift 2  lower[24]  26 - shift
+    //     if (index == -1) {
+    //         result += s[i]
+    //     }
+    //     else if (s[i] == 'a') {
+    //         var new_index = 26 - shift
+    //         result += lower[new_index]
+    //     }else {
+    //         result += lower[decode_index]
+    //     }
+    //     i += 1
+    // }
+    // return result
+
+    return encode3(s, 26 - shift) //?
 }
 
 const test_decode3 = function() {
@@ -491,7 +515,7 @@ const test_decode3 = function() {
     ensure(decode3('j z', 3) == 'g w', 'decode3 2')
 }
 
-// test_decode3()
+test_decode3()
 
 
 
