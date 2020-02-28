@@ -449,7 +449,7 @@ const encode3 = function(s, shift) {
     while(i < s.length()) {
         var c = s[i]
         var index = find(lower, c)
-        if (index > -1){
+        if (index > -1){ // 在lower范围内
             index += shift  //移动shift 位
             //去余数
             index = index % 26
@@ -549,7 +549,7 @@ const decode4 = function() {
 
 }
 
-decode4()
+// decode4()
 
 // uqogvkogu k ycpv vq ejcv ykvj aqw,dwv k jcxg pq tgcuqp vq ejcv ykvj aqw
 // tpnfujnft j xbou up dibu xjui zpv,cvu j ibwf op sfbtpo up dibu xjui zpv

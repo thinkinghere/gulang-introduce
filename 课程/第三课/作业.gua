@@ -261,7 +261,7 @@ const fac = function(n) {
 
 log('fac', fac(5)) // 5 4 3 2
 
-//程序只有一个入口
+//程序只有一个入口 正交
 //组件化
 //最外层不能有未定义的代码
 const __main = function() {
